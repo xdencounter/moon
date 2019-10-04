@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xddal.moon.auto.dao.AttachmentMapper">
+  <resultMap id="BaseResultMap" type="com.xddal.moon.auto.entity.Attachment">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="attach_name" jdbcType="VARCHAR" property="attachName" />
+    <result column="attach_type" jdbcType="TINYINT" property="attachType" />
+    <result column="original_name" jdbcType="VARCHAR" property="originalName" />
+    <result column="gmt_create" jdbcType="VARCHAR" property="gmtCreate" />
+    <result column="gmt_modified" jdbcType="VARCHAR" property="gmtModified" />
+    <result column="attach_sort" jdbcType="TINYINT" property="attachSort" />
+    <result column="specification_id" jdbcType="BIGINT" property="specificationId" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from attachment
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xddal.moon.auto.entity.Attachment">
+    insert into attachment (id, attach_name, attach_type, 
+      original_name, gmt_create, gmt_modified, 
+      attach_sort, specification_id)
+    values (#{id,jdbcType=BIGINT}, #{attachName,jdbcType=VARCHAR}, #{attachType,jdbcType=TINYINT}, 
+      #{originalName,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=VARCHAR}, #{gmtModified,jdbcType=VARCHAR}, 
+      #{attachSort,jdbcType=TINYINT}, #{specificationId,jdbcType=BIGINT})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.xddal.moon.auto.entity.Attachment">
+    update attachment
+    set attach_name = #{attachName,jdbcType=VARCHAR},
+      attach_type = #{attachType,jdbcType=TINYINT},
+      original_name = #{originalName,jdbcType=VARCHAR},
+      gmt_create = #{gmtCreate,jdbcType=VARCHAR},
+      gmt_modified = #{gmtModified,jdbcType=VARCHAR},
+      attach_sort = #{attachSort,jdbcType=TINYINT},
+      specification_id = #{specificationId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select id, attach_name, attach_type, original_name, gmt_create, gmt_modified, attach_sort, 
+    specification_id
+    from attachment
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, attach_name, attach_type, original_name, gmt_create, gmt_modified, attach_sort, 
+    specification_id
+    from attachment
+  </select>
+</mapper>

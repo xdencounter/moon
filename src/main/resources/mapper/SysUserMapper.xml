@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xddal.moon.auto.dao.SysUserMapper">
+  <resultMap id="BaseResultMap" type="com.xddal.moon.auto.entity.SysUser">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_name" jdbcType="VARCHAR" property="user_name" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="mobile_phone" jdbcType="VARCHAR" property="mobile_phone" />
+    <result column="real_name" jdbcType="VARCHAR" property="real_name" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="qq" jdbcType="VARCHAR" property="qq" />
+    <result column="age" jdbcType="TINYINT" property="age" />
+    <result column="user_status" jdbcType="INTEGER" property="user_status" />
+    <result column="telephone" jdbcType="VARCHAR" property="telephone" />
+    <result column="this_login_ip" jdbcType="VARCHAR" property="this_login_ip" />
+    <result column="last_login_time" jdbcType="TIMESTAMP" property="last_login_time" />
+    <result column="login_time" jdbcType="TIMESTAMP" property="login_time" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmt_create" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmt_modified" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from sys_user
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xddal.moon.auto.entity.SysUser">
+    insert into sys_user (id, user_name, `password`, 
+      mobile_phone, real_name, sex, 
+      email, qq, age, user_status, 
+      telephone, this_login_ip, last_login_time, 
+      login_time, gmt_create, gmt_modified
+      )
+    values (#{id,jdbcType=BIGINT}, #{user_name,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{mobile_phone,jdbcType=VARCHAR}, #{real_name,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{qq,jdbcType=VARCHAR}, #{age,jdbcType=TINYINT}, #{user_status,jdbcType=INTEGER}, 
+      #{telephone,jdbcType=VARCHAR}, #{this_login_ip,jdbcType=VARCHAR}, #{last_login_time,jdbcType=TIMESTAMP}, 
+      #{login_time,jdbcType=TIMESTAMP}, #{gmt_create,jdbcType=TIMESTAMP}, #{gmt_modified,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.xddal.moon.auto.entity.SysUser">
+    update sys_user
+    set user_name = #{user_name,jdbcType=VARCHAR},
+      `password` = #{password,jdbcType=VARCHAR},
+      mobile_phone = #{mobile_phone,jdbcType=VARCHAR},
+      real_name = #{real_name,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      qq = #{qq,jdbcType=VARCHAR},
+      age = #{age,jdbcType=TINYINT},
+      user_status = #{user_status,jdbcType=INTEGER},
+      telephone = #{telephone,jdbcType=VARCHAR},
+      this_login_ip = #{this_login_ip,jdbcType=VARCHAR},
+      last_login_time = #{last_login_time,jdbcType=TIMESTAMP},
+      login_time = #{login_time,jdbcType=TIMESTAMP},
+      gmt_create = #{gmt_create,jdbcType=TIMESTAMP},
+      gmt_modified = #{gmt_modified,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select id, user_name, `password`, mobile_phone, real_name, sex, email, qq, age, user_status, 
+    telephone, this_login_ip, last_login_time, login_time, gmt_create, gmt_modified
+    from sys_user
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, user_name, `password`, mobile_phone, real_name, sex, email, qq, age, user_status, 
+    telephone, this_login_ip, last_login_time, login_time, gmt_create, gmt_modified
+    from sys_user
+  </select>
+<!--  <select id="findByPage" resultMap="BaseResultMap">-->
+<!--    select id, user_name, `password`, mobile_phone, real_name, sex, email, qq, age, user_status,-->
+<!--    telephone, this_login_ip, last_login_time, login_time, gmt_create, gmt_modified-->
+<!--    from sys_user-->
+<!--  </select>-->
+</mapper>
